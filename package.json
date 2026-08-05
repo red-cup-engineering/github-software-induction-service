@@ -1,0 +1,35 @@
+{
+  "name": "@red-cup-engineering/github-software-induction-service",
+  "version": "2.0.1",
+  "private": true,
+  "type": "module",
+  "description": "Customer-side verification and atomic GitHub induction of supplier software proposals.",
+  "bin": {
+    "execute-github-software-induction-a2a-message": "./scripts/execute-a2a-message.mjs",
+    "submit-github-software-induction-activitypub": "./scripts/submit-activitypub.mjs",
+    "serve-github-software-induction-a2a": "./scripts/serve-a2a.mjs"
+  },
+  "exports": {
+    ".": "./src/client.mjs",
+    "./provider": "./src/post-attempt.mjs",
+    "./executor": "./src/a2a-executor.mjs",
+    "./src/client.mjs": "./src/client.mjs"
+  },
+  "dependencies": {
+    "@a2a-js/sdk": "1.0.0-beta.0",
+    "@red-cup-engineering/a2a-contracted-agent-service": "2.0.5",
+    "@red-cup-engineering/a2a-rmn-part-service": "1.0.1",
+    "@red-cup-engineering/a2a-rmn-task-client-service": "1.1.1",
+    "@red-cup-engineering/activitypub-services-section": "1.0.2",
+    "@red-cup-engineering/github-services-section": "1.0.0",
+    "@red-cup-engineering/gcloud-runtime-authorities-service": "1.0.0",
+    "@red-cup-engineering/immutable-content-custody-service": "1.0.1",
+    "@red-cup-engineering/rmn-semantic-conformance": "6.0.2",
+    "@lenticule-science/witness-journal-rdf-projection-service": "1.0.3",
+    "@red-cup-engineering/sandbox-command-execution-service": "1.0.0"
+  },
+  "scripts": {
+    "check": "node --check src/post-attempt.mjs && node --check src/a2a-executor.mjs && node --check src/client.mjs && node --check src/induction-saga.mjs && node --check src/github-induction-production-runtime.mjs && node --check src/serve-activitypub.mjs && node --check scripts/execute-a2a-message.mjs && node --check scripts/submit-activitypub.mjs && node --check scripts/serve-a2a.mjs",
+    "test": "node --test"
+  }
+}

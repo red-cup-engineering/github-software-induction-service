@@ -1,0 +1,28 @@
+{
+  "profile": "org.emsenn.evm.sovereign-enterprise-account.v3",
+  "enterprise": {
+    "nodeId": "github-software-induction-service",
+    "urn": "urn:ame:github-software-induction-service",
+    "enterpriseId": "0x011f9c7a23a617b86bb856964e590cc7e5783bfba1a146e67780ae9ec3cc95d0"
+  },
+  "chain": {
+    "chainId": 5615610,
+    "caip2": "eip155:5615610"
+  },
+  "account": {
+    "address": "0x634baa7333057561671f9ed2f7b879081e17cc36",
+    "caip10": "eip155:5615610:0x634baa7333057561671f9ed2f7b879081e17cc36"
+  },
+  "factory": {
+    "address": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+    "userSalt": "0xf29d3a70f041984c737e688d972e274c478e9884b11ffc9a2b34c2c600a6a4c3"
+  },
+  "policy": {
+    "signer": "0xc0674398815da02bd955c860eb12300445914c8a",
+    "custody": "settlement-private"
+  },
+  "deployment": {
+    "transaction": "0x21c27f4a9fb0f016635b0911f479d6a698705835891470a8814ff79faa22641c",
+    "block": 155
+  }
+}
