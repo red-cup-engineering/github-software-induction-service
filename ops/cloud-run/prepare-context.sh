@@ -5,7 +5,7 @@ script_dir=$(CDPATH= cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
 repository_root=$(git -C "$script_dir" rev-parse --show-toplevel)
 context_dir=${1:-}
 [[ "$context_dir" == /tmp/* ]] || { echo "usage: $0 /tmp/exact-build-context" >&2; exit 64; }
-mkdir -p "$context_dir/lib/emsenn/services/561-group/services/red-cup-engineering"
+mkdir -p "$context_dir/lib/emsenn/services/561-group/services/engineering-services-section/services/computer-services-section/services/web-services-section"
 
 package_relative=${script_dir#"$repository_root/"}
 package_relative=${package_relative%/ops/cloud-run}
@@ -69,7 +69,7 @@ NODE
 mapfile -t admitted_records < "$records_path"
 rm -f "$records_path"
 
-archive_root="$context_dir/lib/emsenn/services/561-group/services/red-cup-engineering"
+archive_root="$context_dir/lib/emsenn/services/561-group/services/engineering-services-section/services/computer-services-section/services/web-services-section"
 proof_path="$context_dir/git-object-closure.jsonl"
 : > "$proof_path"
 for record in "${admitted_records[@]}"; do

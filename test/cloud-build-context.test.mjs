@@ -2,12 +2,13 @@ import assert from "node:assert/strict";
 import { execFile } from "node:child_process";
 import { access, chmod, mkdtemp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
-import { dirname, join } from "node:path";
+import { dirname, join, relative } from "node:path";
 import { promisify } from "node:util";
 import test from "node:test";
 
 const execute = promisify(execFile);
-const packagePath = "services/software-services-section/services/software-development-services-section/services/version-control-services-section/services/github-software-induction-service";
+const packagePath = "services/web-platform-services-section/services/web2-platform-services-section/services/web2-software-platform-services-section/services/github-services-section/services/github-software-induction-service";
+const archiveRoot = "lib/emsenn/services/561-group/services/engineering-services-section/services/computer-services-section/services/web-services-section";
 
 async function write(root, relative, body) {
   const path = join(root, relative);
@@ -20,16 +21,18 @@ test("Git-object build context excludes dirty source and contains recursive file
   const context = await mkdtemp(join(tmpdir(), "git-object-output-"));
   const linked = await mkdtemp(join(tmpdir(), "git-object-linked-"));
   const script = join(root, packagePath, "ops/cloud-run/prepare-context.sh");
+  const localPath = "services/local";
+  const linkedPath = "services/linked";
   await write(root, `${packagePath}/package.json`, JSON.stringify({ dependencies: {
-    "@union/local": "file:../../../../../web-services-section/services/local",
-    "@union/linked": "file:../../../../../web-services-section/services/linked",
+    "@union/local": `file:${relative(packagePath, localPath)}`,
+    "@union/linked": `file:${relative(packagePath, linkedPath)}`,
   } }));
   await write(root, `${packagePath}/package-lock.json`, "{\"lockfileVersion\":3,\"packages\":{}}\n");
   await write(root, `${packagePath}/src/entry.mjs`, "export const source = 'committed';\n");
   await write(root, `${packagePath}/ops/cloud-run/Dockerfile`, "FROM scratch\n");
   await write(root, `${packagePath}/ops/cloud-run/cloudbuild.yaml`, "steps: []\n");
-  await write(root, "services/software-services-section/services/web-services-section/services/local/package.json", "{}\n");
-  await write(root, "services/software-services-section/services/web-services-section/services/local/src/value.mjs", "export const local = true;\n");
+  await write(root, `${localPath}/package.json`, "{}\n");
+  await write(root, `${localPath}/src/value.mjs`, "export const local = true;\n");
   await write(linked, "package.json", "{\"name\":\"@union/linked\",\"version\":\"1.0.0\"}\n");
   await write(linked, "src/value.mjs", "export const linked = 'committed';\n");
   await execute("git", ["init", "-q"], { cwd: linked });
@@ -44,17 +47,17 @@ test("Git-object build context excludes dirty source and contains recursive file
   await execute("git", ["init", "-q"], { cwd: root });
   await execute("git", ["config", "user.email", "test@example.invalid"], { cwd: root });
   await execute("git", ["config", "user.name", "Test"], { cwd: root });
-  await execute("git", ["-c", "protocol.file.allow=always", "submodule", "add", "-q", linked, "services/software-services-section/services/web-services-section/services/linked"], { cwd: root });
+  await execute("git", ["-c", "protocol.file.allow=always", "submodule", "add", "-q", linked, linkedPath], { cwd: root });
   await execute("git", ["add", "."], { cwd: root });
   await execute("git", ["commit", "-qm", "closure"], { cwd: root });
   await write(root, `${packagePath}/src/entry.mjs`, "export const source = 'dirty';\n");
-  await write(root, "services/software-services-section/services/web-services-section/services/linked/src/value.mjs", "export const linked = 'dirty';\n");
+  await write(root, `${linkedPath}/src/value.mjs`, "export const linked = 'dirty';\n");
   await execute(script, [context], { cwd: root });
-  const archived = join(context, "lib/emsenn/services/561-group/services/red-cup-engineering");
+  const archived = join(context, archiveRoot);
   assert.match(await readFile(join(archived, packagePath, "src/entry.mjs"), "utf8"), /committed/);
-  await readFile(join(archived, "services/software-services-section/services/web-services-section/services/local/src/value.mjs"), "utf8");
-  assert.match(await readFile(join(archived, "services/software-services-section/services/web-services-section/services/linked/src/value.mjs"), "utf8"), /committed/);
-  assert.doesNotMatch(await readFile(join(archived, "services/software-services-section/services/web-services-section/services/linked/src/value.mjs"), "utf8"), /dirty/);
+  await readFile(join(archived, localPath, "src/value.mjs"), "utf8");
+  assert.match(await readFile(join(archived, linkedPath, "src/value.mjs"), "utf8"), /committed/);
+  assert.doesNotMatch(await readFile(join(archived, linkedPath, "src/value.mjs"), "utf8"), /dirty/);
   assert.match(await readFile(join(context, "git-object-closure.jsonl"), "utf8"), new RegExp(linkedCommit));
   assert.equal((await readFile(join(context, "Dockerfile"), "utf8")).trim(), "FROM scratch");
 });
@@ -76,7 +79,7 @@ test("ordinary pre-publication assay imports the committed archive without .git 
       const repository = (await execute("git", ["rev-parse", "--show-toplevel"], { cwd: service })).stdout.trim();
       await execute(prepare, [context], { cwd: repository });
       await assert.rejects(access(join(context, ".git")), /ENOENT/u);
-      archived = join(context, "lib/emsenn/services/561-group/services/red-cup-engineering", packagePath);
+      archived = join(context, archiveRoot, packagePath);
       await execute("npm", ["ci", "--install-links", "--omit=dev", "--ignore-scripts", "--no-audit", "--no-fund"], { cwd: archived });
     } catch (error) {
       if (!/not a git repository/u.test(String(error))) throw error;

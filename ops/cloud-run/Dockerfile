@@ -2,7 +2,7 @@
 FROM node:22.18-bookworm-slim
 
 COPY --chown=node:node lib /app/lib
-WORKDIR /app/lib/emsenn/services/561-group/services/red-cup-engineering/services/software-services-section/services/software-development-services-section/services/version-control-services-section/services/github-software-induction-service
+WORKDIR /app/lib/emsenn/services/561-group/services/engineering-services-section/services/computer-services-section/services/web-services-section/services/web-platform-services-section/services/web2-platform-services-section/services/web2-software-platform-services-section/services/github-services-section/services/github-software-induction-service
 USER root
 RUN --mount=type=secret,id=npmrc,target=/root/.npmrc \
     apt-get update && apt-get install -y --no-install-recommends ca-certificates git && rm -rf /var/lib/apt/lists/* \
