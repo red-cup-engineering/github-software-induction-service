@@ -1,20 +1,16 @@
 import { Message, Role } from "@a2a-js/sdk";
 import { extractRmnPart, rmnPart } from "@red-cup-engineering/a2a-rmn-part-service";
-import { decodeSemantic, semanticBytes, semanticId } from "@red-cup-engineering/rmn-semantic-conformance";
-import { decodeRelationalValue } from "@red-cup-engineering/rmn-semantic-conformance/relational-value";
-import { relationalWitnessJournalDocument } from "@lenticule-science/witness-journal-rdf-projection-service/client";
+import { admitJsonSemanticContent, EMPTY_WITNESS_ROOT, identifyJsonSemanticContent } from "@red-cup-engineering/computer-content-engineering-services-section/semantic-content-identity";
 import { induceGithubSoftwareProposalLocally } from "@red-cup-engineering/github-services-section/software-induction";
 import { executeInductionSaga } from "@red-cup-engineering/github-services-section/induction-saga";
 
 export const ACTOR = "urn:ame:github-software-induction-service";
-const id = (value) => semanticId(relationalWitnessJournalDocument(value));
+const OBJECT_KIND = "github-software-induction.operation";
+const identified = (value) => identifyJsonSemanticContent({ objectKind: OBJECT_KIND, value, witnessRoot: EMPTY_WITNESS_ROOT });
+const id = (value) => identified(value).id;
 export const record = (body) => Object.freeze({ id: id(body), ...body });
-export const operationBytes = (value) => semanticBytes(relationalWitnessJournalDocument(value));
-export function operationFromBytes(bytes) {
-  const term = decodeSemantic(bytes);
-  if (term?.[0] !== "ascribe" || term.length !== 3) throw new Error("GitHub induction operation is not typed relational RMN");
-  return decodeRelationalValue(term[1], term[2]);
-}
+export const operationBytes = (value) => identified(value).bytes;
+export const operationFromBytes = (bytes) => admitJsonSemanticContent({ bytes, objectKind: OBJECT_KIND }).value;
 function exact(value) {
   const body = value && typeof value === "object"
     ? Object.fromEntries(Object.entries(value).filter(([key]) => key !== "id"))
