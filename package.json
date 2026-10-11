@@ -23,7 +23,7 @@
     "@red-cup-engineering/github-services-section": "workspace:*",
     "@red-cup-engineering/gcloud-runtime-authorities-service": "workspace:*",
     "@red-cup-engineering/immutable-content-custody-service": "workspace:*",
-    "@red-cup-engineering/computer-content-engineering-services-section": "workspace:*"
+    "@red-cup-engineering/computer-content-address-engineering-services-section": "workspace:*"
   },
   "scripts": {
     "check": "node --check src/a2a-executor.mjs && node --check src/client.mjs && node --check src/github-induction-production-runtime.mjs && node --check src/serve-activitypub.mjs && node --check scripts/execute-a2a-message.mjs && node --check scripts/submit-activitypub.mjs && node --check scripts/serve-a2a.mjs",
