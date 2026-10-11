@@ -16,15 +16,15 @@
   },
   "dependencies": {
     "@a2a-js/sdk": "1.0.0-beta.0",
-    "@red-cup-engineering/a2a-contracted-agent-service": "2.0.5",
-    "@red-cup-engineering/a2a-rmn-part-service": "1.0.1",
-    "@red-cup-engineering/a2a-rmn-task-client-service": "1.1.1",
-    "@red-cup-engineering/activitypub-services-section": "1.0.2",
-    "@red-cup-engineering/github-services-section": "1.0.0",
-    "@red-cup-engineering/gcloud-runtime-authorities-service": "1.0.0",
-    "@red-cup-engineering/immutable-content-custody-service": "1.0.1",
+    "@red-cup-engineering/a2a-contracted-agent-service": "workspace:*",
+    "@red-cup-engineering/a2a-rmn-part-service": "workspace:*",
+    "@red-cup-engineering/a2a-rmn-task-client-service": "workspace:*",
+    "@red-cup-engineering/activitypub-services-section": "workspace:*",
+    "@red-cup-engineering/github-services-section": "workspace:*",
+    "@red-cup-engineering/gcloud-runtime-authorities-service": "workspace:*",
+    "@red-cup-engineering/immutable-content-custody-service": "workspace:*",
     "@red-cup-engineering/rmn-semantic-conformance": "6.0.2",
-    "@lenticule-science/witness-journal-rdf-projection-service": "1.0.3",
+    "@lenticule-science/witness-journal-rdf-projection-service": "workspace:*",
     "@red-cup-engineering/sandbox-command-execution-service": "1.0.0"
   },
   "scripts": {
