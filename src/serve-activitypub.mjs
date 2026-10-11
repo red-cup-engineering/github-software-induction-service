@@ -8,7 +8,7 @@ import { serveActivityPubProvider } from "@red-cup-engineering/activitypub-servi
 import { extractRmnActivity, projectRmnActivity } from "@red-cup-engineering/activitypub-services-section/rmn-activity";
 import { extractRmnPart, parseA2aMessage } from "@red-cup-engineering/a2a-rmn-part-service";
 import { executeA2aMessage, operationFromBytes } from "./a2a-executor.mjs";
-import { markInductionResponseDelivered } from "./induction-saga.mjs";
+import { markInductionResponseDelivered } from "@red-cup-engineering/github-services-section/induction-saga";
 import { createGithubInductionProductionRuntime } from "./github-induction-production-runtime.mjs";
 
 export async function serveGithubSoftwareInductionActivityPub(options = {}) {

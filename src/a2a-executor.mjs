@@ -3,8 +3,8 @@ import { extractRmnPart, rmnPart } from "@red-cup-engineering/a2a-rmn-part-servi
 import { decodeSemantic, semanticBytes, semanticId } from "@red-cup-engineering/rmn-semantic-conformance";
 import { decodeRelationalValue } from "@red-cup-engineering/rmn-semantic-conformance/relational-value";
 import { relationalWitnessJournalDocument } from "@lenticule-science/witness-journal-rdf-projection-service/client";
-import { induceGithubSoftwareProposalLocally } from "./post-attempt.mjs";
-import { executeInductionSaga } from "./induction-saga.mjs";
+import { induceGithubSoftwareProposalLocally } from "@red-cup-engineering/github-services-section/software-induction";
+import { executeInductionSaga } from "@red-cup-engineering/github-services-section/induction-saga";
 
 export const ACTOR = "urn:ame:github-software-induction-service";
 const id = (value) => semanticId(relationalWitnessJournalDocument(value));
