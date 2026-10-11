@@ -11,7 +11,6 @@
   },
   "exports": {
     ".": "./src/client.mjs",
-    "./provider": "./src/post-attempt.mjs",
     "./executor": "./src/a2a-executor.mjs",
     "./src/client.mjs": "./src/client.mjs"
   },
@@ -29,7 +28,7 @@
     "@red-cup-engineering/sandbox-command-execution-service": "1.0.0"
   },
   "scripts": {
-    "check": "node --check src/post-attempt.mjs && node --check src/a2a-executor.mjs && node --check src/client.mjs && node --check src/induction-saga.mjs && node --check src/github-induction-production-runtime.mjs && node --check src/serve-activitypub.mjs && node --check scripts/execute-a2a-message.mjs && node --check scripts/submit-activitypub.mjs && node --check scripts/serve-a2a.mjs",
+    "check": "node --check src/a2a-executor.mjs && node --check src/client.mjs && node --check src/github-induction-production-runtime.mjs && node --check src/serve-activitypub.mjs && node --check scripts/execute-a2a-message.mjs && node --check scripts/submit-activitypub.mjs && node --check scripts/serve-a2a.mjs",
     "test": "node --test"
   }
 }

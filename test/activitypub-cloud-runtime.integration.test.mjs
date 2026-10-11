@@ -3,7 +3,7 @@ import test from "node:test";
 import { createActivityPubProvider, importActorKeyPairs } from "@red-cup-engineering/activitypub-services-section";
 import { generateActorKeyMaterial } from "@red-cup-engineering/activitypub-services-section/keys";
 import { createCloudTasksMessageQueue, createGcsTransactionalOperationStore } from "@red-cup-engineering/gcloud-runtime-authorities-service";
-import { executeInductionSaga, markInductionResponseDelivered } from "../src/induction-saga.mjs";
+import { executeInductionSaga, markInductionResponseDelivered } from "@red-cup-engineering/github-services-section/induction-saga";
 
 const operation = `ni:///sha-256;${"A".repeat(43)}`;
 const induction = Object.freeze({ id: operation, input: Object.freeze({ source: { repository: "union/root", commit: "a".repeat(40) }, target: { repository: "union/root", ref: "heads/main" } }) });
