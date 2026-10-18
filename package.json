@@ -6,8 +6,7 @@
   "description": "Customer-side verification and atomic GitHub induction of supplier software proposals.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/red-cup-engineering/computer-web-engineering-services-section.git",
-    "directory": "services/web-platform-services-section/services/web2-platform-services-section/services/web2-software-platform-services-section/services/github-services-section/services/github-software-induction-service"
+    "url": "git+https://github.com/red-cup-engineering/github-software-induction-service.git"
   },
   "bin": {
     "execute-github-software-induction-a2a-message": "./scripts/execute-a2a-message.mjs",
