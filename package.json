@@ -32,5 +32,10 @@
   "scripts": {
     "check": "node --check src/a2a-executor.mjs && node --check src/client.mjs && node --check src/github-induction-production-runtime.mjs && node --check src/serve-activitypub.mjs && node --check scripts/execute-a2a-message.mjs && node --check scripts/submit-activitypub.mjs && node --check scripts/serve-a2a.mjs",
     "test": "node --test"
+  },
+  "license": "MIT",
+  "funding": {
+    "type": "individual",
+    "url": "https://github.com/561-group/.github/blob/main/TIPS.md"
   }
 }
