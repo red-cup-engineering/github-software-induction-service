@@ -1,1 +1,1 @@
-{"keys":[{"crv":"Ed25519","x":"JXc0Pyle_u-KViJqo2kuOMD7v05rQWEbupcVtTev_IU","kty":"OKP","kid":"github-software-induction-service-ed25519","alg":"EdDSA","use":"sig"}]}
+{"keys":[{"crv":"Ed25519","x":"I4vIyaWACYz1656OSpHJV3C_VA9xgygfcFO-4He03tA","kty":"OKP","kid":"github-software-induction-service-ed25519-2026-10-21","alg":"EdDSA","use":"sig"}]}

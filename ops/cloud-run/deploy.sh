@@ -66,7 +66,7 @@ const environment = {
   CLOUDFLARE_R2_BUCKET: process.env.CLOUDFLARE_R2_BUCKET, CLOUD_TASKS_LOCATION: process.env.CLOUD_TASKS_LOCATION,
   CLOUD_TASKS_QUEUE: process.env.CLOUD_TASKS_QUEUE, CLOUD_TASKS_SERVICE_ACCOUNT: process.env.CLOUD_TASKS_SERVICE_ACCOUNT,
   GCS_OPERATION_BUCKET: process.env.GCS_OPERATION_BUCKET, GCS_OPERATION_PREFIX: process.env.GCS_OPERATION_PREFIX, AGENT_CARD_SIGNING_KEY: "/secrets/a2a-key/signing-key.pem",
-  AGENT_CARD_JWKS: "/secrets/a2a-jwks/jwks.json", AGENT_CARD_SIGNING_KID: "github-software-induction-service-ed25519", AGENT_CARD_SIGNING_ALG: "EdDSA",
+  AGENT_CARD_JWKS: "/secrets/a2a-jwks/jwks.json", AGENT_CARD_SIGNING_KID: "github-software-induction-service-ed25519-2026-10-21", AGENT_CARD_SIGNING_ALG: "EdDSA",
 };
 const secretBindings = {
   "/secrets/activitypub/keys.json": "github-software-induction-activitypub-keys:latest",
