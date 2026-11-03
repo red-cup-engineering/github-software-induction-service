@@ -8,7 +8,7 @@ import test from "node:test";
 
 const execute = promisify(execFile);
 const packagePath = "services/web-platform-services-section/services/web2-platform-services-section/services/web2-software-platform-services-section/services/github-services-section/services/github-software-induction-service";
-const archiveRoot = "lib/emsenn/services/561-group/services/engineering-services-section/services/computer-services-section/services/web-services-section";
+const archiveRoot = "lib/emsenn/services/561-group/services/engineering-services-section/services/computer-services-section/services/web-engineering-services-section";
 
 async function write(root, relative, body) {
   const path = join(root, relative);

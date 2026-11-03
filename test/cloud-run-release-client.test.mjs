@@ -11,7 +11,7 @@ const script = new URL("../ops/cloud-run/deploy.sh", import.meta.url);
 
 test("release client builds committed context, stages a digest through the actuator, then cuts over that revision", async (t) => {
   let CLOUD_RUN_TAGGED_ROUTE_LIMITS;
-  try { ({ CLOUD_RUN_TAGGED_ROUTE_LIMITS } = await import("../../../../../../../../../../../../web-services-section/services/web-platform-services-section/services/cloud-services-section/services/gcloud-services-section/services/gcloud-cloud-run-actuator-service/src/gcloud-cloud-run-actuator.mjs")); }
+  try { ({ CLOUD_RUN_TAGGED_ROUTE_LIMITS } = await import("../../../../../../../../../../../../web-engineering-services-section/services/web-platform-services-section/services/cloud-services-section/services/gcloud-services-section/services/gcloud-cloud-run-actuator-service/src/gcloud-cloud-run-actuator.mjs")); }
   catch (error) { if (error?.code === "ERR_MODULE_NOT_FOUND") return t.skip("actuator source is intentionally outside the runtime archive"); throw error; }
   const root = await mkdtemp(join(tmpdir(), "github-induction-release-"));
   const calls = join(root, "calls.jsonl"), gcloud = join(root, "gcloud"), actuator = join(root, "actuator"), prepare = join(root, "prepare-context"), preload = join(root, "acceptance-fetch.mjs");
